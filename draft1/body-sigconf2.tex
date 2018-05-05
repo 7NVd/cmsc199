@@ -1,0 +1,54 @@
+\section{Introduction}
+ Pattern matching is an important concept in computer science due to its many technological applications such as DNA matching, voice recognition, face recognition, network security, and text processing.
+\\
+Pattern matching is finding one or all occurrences of a certain pattern $p$ of length $m$ in a text $t$ of length $n$. Pattern matching algorithms as is with all other algorithms base its performance by its time efficiency. The time efficiency of a pattern matching algorithm is based on its basic operation: comparison. A higher number of comparisons mean longer time efficiency. Thus, most pattern matching algorithms are concerned with minimizing the number of comparisons to get a better time efficiency.
+\\
+This paper is concerned with discussing and illustrating three pattern matching algorithms: brute force, Boyer-Moore, and Berry Ravindran. Furthermore, this paper also aims to elaborate on the developments made on each algorithm and how each development improved the time efficiency of the algorithm's search time.
+\section{Definition of Terms}
+
+\section{Brute Force}
+The brute force or naive method compares each character in the pattern $p$ to each character in the text $t$. It compares $p$ to $t$ from left to right until it finds $p$ or a mismatch occurs or there is an insufficient number of characters left in $t$. 
+\subsection{Algorithm}
+The algorithm for the brute force method is given below:
+\begin{lstlisting}
+BruteForceStringMatch(T[0...n-1],P[0...m-1])
+//Input: An array T[0...n-1] of n characters representing a text and an array P[0...m-1] of m characters representing a pattern
+//Output: The index of the first character in the text that starts a matching substring or -1 if the search is unsuccessful
+		for i = 0 to n-m do
+			j = 0
+			while j < m and P[j] = T[i+j] do
+				j = j+1
+			if j = m return i
+		return -1 
+\end{lstlisting} 
+\subsection{Example}
+hey paul can you put the example from our presentation?? thanks!
+\subsection{Worst Case}    
+The worst case occurs when the number of comparisons is maximized. From the algorithm above, the maximum number of comparisons made between each character from $p$ to the characters in text $t$ is $m$. This is attained when each character from $p$ is compared to each corresponding character in $t$. Furthermore, the maximum number of comparisons between $p$ and $t$ is $n-m+1$. This is attained due to the nature of the algorithm wherein it compares $p$ to $t$ at least once and shifting just once if a mismatch occurs. Thus, the maximum number of comparison is $(m)(n-m+1)$ which implies that the time complexity of the worst case is $\Theta(nm)$.
+\section{Boyer-Moore}
+The Boyer-Moore String Matching algorithm performs its match from right to left instead the usual left to right of its time. This right to left matching enabled Boyer-Moore algorithm to skip more characters than the other algorithms.
+
+\subsection{Algorithm}
+The Boyer-Moore searches using the following algorithm:
+\begin{lstlisting}[mathescape=true]
+		$stringlen \gets$ length of $string$.
+		$i \gets patlen.$
+$top$:	if $i > stringlen$ then return false
+		$j \gets patlen$.
+$loop$:	if $j=0$ then return $j+1$.
+		if $string(i)=pat(j)$
+			then
+			$j \gets j-1$.
+			$i \gets i-1$.
+			goto $loop$.
+			close;
+		$i \gets i + max(\ delta_1(string(i)),\ delta_2(j)\ )$
+\end{lstlisting}
+
+With this algorithm, pattern $pat$ of length $patlen$ is searched in string $string$ of length $stringlen$.
+
+\section{Berry Ravindran}
+
+\section{Conclusions}
+
+\end{document}  % This is where a 'short' article might terminate
