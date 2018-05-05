@@ -24,11 +24,8 @@ BruteForceStringMatch(T[0...n-1],P[0...m-1])
 \subsection{Example}
 hey paul can you put the example from our presentation?? thanks!
 \subsection{Worst Case}    
-\section{Heuristic Functions}
-In Computer Science, A.I. and Mathematical optimizations, a heuristic function is a function that takes the best alternative out of one or more alternatives at a branching step in an algorithm. A heuristic function's objective is to speed up an algorithm by leading it to a `shortcut.` In some extreme cases these functions may not even improve the speed at which the algorithm converges to a solution and may add unnecessary load for the algorithm. A heuristic function may trade-off optimality, completeness, accuracy and precision depending on the implementation and objectives, in other cases heuristic functions may be generally benficial to the algorithm itself.
-
-The following two exact string matching algorithms that will be discussed use heuristic functions to speed up the matching process.
-\section{Boyer-Moore}
+The worst case occurs when the number of comparisons is maximized. From the algorithm above, the maximum number of comparisons made between each character from $p$ to the characters in text $t$ is $m$. This is attained when each character from $p$ is compared to each corresponding character in $t$. Furthermore, the maximum number of comparisons between $p$ and $t$ is $n-m+1$. This is attained due to the nature of the algorithm wherein it compares $p$ to $t$ at least once and shifting just once if a mismatch occurs. Thus, the maximum number of comparison is $(m)(n-m+1)$ which implies that the time complexity of the worst case is $\Theta(nm)$.
+\section{Boyer-Moore}		%	Boyer Moore
 The Boyer-Moore String Matching algorithm performs its match from right to left instead the usual left to right of its time. This right to left matching enabled Boyer-Moore algorithm to skip more characters than the other algorithms.
 
 \subsection{Algorithm}
@@ -50,8 +47,7 @@ $loop$:	if $j=0$ then return $j+1$.
 
 With this algorithm, pattern $pat$ of length $patlen$ is searched in string $string$ of length $stringlen$.
 
-
-\section{Berry-Ravindran}
+\section{Berry Ravindran}		%	Berry Ravindran
 Based on a plethora of algorithms that was brought about by Boyer-Moore Exact String Matching Algorithm, Berry and Ravindran designed an algorithm which does shifting considering the two consecutive characters to the right of the window.
 \subsection{Algorithm}
 \begin{enumerate}
@@ -88,3 +84,4 @@ Based on a plethora of algorithms that was brought about by Boyer-Moore Exact St
 
 \section{Conclusions}
 
+\end{document}  % This is where a 'short' article might terminate
