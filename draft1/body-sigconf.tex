@@ -22,7 +22,31 @@ BruteForceStringMatch(T[0...n-1],P[0...m-1])
 		return -1 
 \end{lstlisting} 
 \subsection{Example}
-hey paul can you put the example from our presentation?? thanks!
+As an example, let $T[0...n-1]=$ ''WE WANT TO EAT MORE ONIONS'', with whitespace being included, and $P[0...m-1]=$ ''ONION''.
+
+
+\begin{lstlisting}[mathescape=true, basicstyle=\LSTfont]
+text:  WE WANT TO EAT MORE ONIONS
+pat:   ONION
+       $\uparrow$
+\end{lstlisting}
+
+Since $T[0] = W \neq O = P[0]$, the pattern is immediately shifted to the right without further comparison.
+
+\begin{lstlisting}[mathescape=true, basicstyle=\LSTfont]
+text:  WE WANT TO EAT MORE ONIONS
+pat:    ONION
+        $\uparrow$
+\end{lstlisting}
+
+Similarly with $T[1+0] = T[1] = E \neq O = P[0]$, the pattern is shifted to the right. The same process goes on until a match is found in $i=20$.
+
+\begin{lstlisting}[mathescape=true, basicstyle=\LSTfont]
+text:  WE WANT TO EAT MORE ONIONS
+pat:                       ONION
+                           $\uparrow\uparrow\uparrow\uparrow\uparrow$
+\end{lstlisting}
+
 \subsection{Worst Case}    
 The worst case occurs when the number of comparisons is maximized. From the algorithm above, the maximum number of comparisons made between each character from $p$ to the characters in text $t$ is $m$. This is attained when each character from $p$ is compared to each corresponding character in $t$. Furthermore, the maximum number of comparisons between $p$ and $t$ is $n-m+1$. This is attained due to the nature of the algorithm wherein it compares $p$ to $t$ at least once and shifting just once if a mismatch occurs. Thus, the maximum number of comparison is $(m)(n-m+1)$ which implies that the time complexity of the worst case is $\Theta(nm)$.
 
@@ -51,6 +75,37 @@ $loop$:	if $j=0$ then return $j+1$.
 
 The function $badChar$ is defined by Boyer and Moore as $$badChar = \left\{ \begin{array}{l l} patlen & \textrm{if } char \textrm{ does not occur in } patlen \\ \multirow{2}{*}{patlen-j} & \textrm{otherwise; where } pat(j) \textrm{ is the}\\  &  \textrm{rightmost occurrence of } char \textrm{ in } pat \end{array}\right.$$
 
+\subsection{Example}
+To make this algorithm clearer, the same example as before will be used.
+\begin{lstlisting}[mathescape=true, basicstyle=\LSTfont]
+string:  WE WANT TO EAT MORE ONIONS
+pat:     ONION
+             $\uparrow$
+\end{lstlisting}
+
+As $string[5]=$A is not in the pattern, $pat$ is shifted by $patlen=5$ to the right.
+
+\begin{lstlisting}[mathescape=true, basicstyle=\LSTfont]
+string:  WE WANT TO EAT MORE ONIONS
+pat:          ONION
+                  $\uparrow$
+\end{lstlisting}
+
+This time $string[10]=$O can be found in $pat$ with the rightmost occurrence at $j=4$. Hence the pattern is shifted to the right by $5-4=1$.
+
+\begin{lstlisting}[mathescape=true, basicstyle=\LSTfont]
+string:  WE WANT TO EAT MORE ONIONS
+pat:           ONION
+                   $\uparrow$
+\end{lstlisting}
+
+This setting is done until $i=25$
+
+\begin{lstlisting}[mathescape=true, basicstyle=\LSTfont]
+text:  WE WANT TO EAT MORE ONIONS
+pat:                       ONION
+                           $\uparrow\uparrow\uparrow\uparrow\uparrow$
+\end{lstlisting}
 
 \subsection{Worst Case}
 The worst case of Boyer-Moore algorithm occurs when for every alignment $pat[1...patlen]$ and $string[i-patlen+1...i]$, every element is compared with only the first elements not being equal. Hence per alignment, $patlen$ comparisons will be done. Also, the pattern is only shifted to the right by one. Since $string$ has the length $stringlen$ and $pat$ is $patlen$ long, there will be $(stringlen-patlen+1)$ alignments. Therefore, the maximum number of comparisons is $(patlen)\times(stringlen-patlen+1)$, consequently it has a complexity of $\Theta(patlen \times stringlen)$.
@@ -61,7 +116,7 @@ Based on a plethora of algorithms that was brought about by Boyer-Moore Exact St
 \begin{enumerate}
 \item Let $P$ be the pattern string to find. Let $T$ be the text to be matched upon. Let $n$ be the length of text $T$ where $T[1]$ is the first character and $T[n]$ is the last character of text $T$. Let $m$ be the length of the pattern such that $P[m]$ is the last character and $P[1]$ is the first character of pattern $P$.
 
-\item Create and initialize the Shift Table. The two dimensional array, $ST$ (Shift Table), of size at most $(m+1)\times(m+1)$ will store the shift values for all pairs of characters. The $ST$ will be initialised with values of $m+2$.
+\item Create and initialize the Shift Table. The two dimensional array, $ST$ (Shift Table), of size at most $(m+1)\times(m+1)$ will store the shift values for all pairs of characters. The $ST$ will be initialized with values of $m+2$.
 
 \item Create and fill the $CON$ Table. As the index of the $ST$ is of type integer, we need to convert the pairs of characters into pairs of integers. This is done by defining an array of ASCII character set size called CON with each entry initialised to $0$.
 
