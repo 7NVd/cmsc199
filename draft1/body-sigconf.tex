@@ -54,7 +54,7 @@ pat:                       ONION
                            $\uparrow\uparrow\uparrow\uparrow\uparrow$
 \end{lstlisting}
 
-\subsection{Worst Case}    
+\subsection{Worst Case}\cite{bfworst}    
 The worst case occurs when the number of comparisons is maximized. From the algorithm above, the maximum number of comparisons made between each character from $p$ to the characters in text $t$ is $m$. This is attained when each character from $p$ is compared to each corresponding character in $t$. Furthermore, the maximum number of comparisons between $p$ and $t$ is $n-m+1$. This is attained due to the nature of the algorithm wherein it compares $p$ to $t$ at least once and shifting just once if a mismatch occurs. Thus, the maximum number of comparison is $(m)(n-m+1)$ which implies that the time complexity of the worst case is $\Theta(nm)$.
 
 \section{Heuristic Functions}
