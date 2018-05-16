@@ -1,7 +1,7 @@
 \section{Introduction}
- Pattern matching is an important concept in computer science due to its many technological applications such as DNA matching, voice recognition, face recognition, network security, and text processing.
+ Pattern matching is an important concept in computer science due to its many technological applications such as DNA matching, voice recognition, face recognition, network security, and text processing.\cite{fsw}
 \\
-Pattern matching is finding one or all occurrences of a certain pattern $p$ of length $m$ in a text $t$ of length $n$. Pattern matching algorithms as is with all other algorithms base its performance by its time efficiency. The time efficiency of a pattern matching algorithm is based on its basic operation: comparison. A higher number of comparisons mean longer time efficiency. Thus, most pattern matching algorithms are concerned with minimizing the number of comparisons to get a better time efficiency.
+Pattern matching is finding one or all occurrences of a certain pattern $p$ of length $m$ in a text $t$ of length $n$. \cite{fsw} Pattern matching algorithms as is with all other algorithms base its performance by its time efficiency. The time efficiency of a pattern matching algorithm is based on its basic operation: comparison. A higher number of comparisons mean longer time efficiency. Thus, most pattern matching algorithms are concerned with minimizing the number of comparisons to get a better time efficiency.
 \\
 This paper is concerned with discussing and illustrating three pattern matching algorithms: brute force, Boyer-Moore, and Berry Ravindran. Furthermore, this paper also aims to elaborate on the developments made on each algorithm and how each development improved the time efficiency of the algorithm's search time.
 \section{Definition of Terms}
@@ -14,8 +14,8 @@ This paper is concerned with discussing and illustrating three pattern matching 
 \end{itemize}
 
 \section{Brute Force}
-The brute force or naive method compares each character in the pattern $p$ to each character in the text $t$. It compares $p$ to $t$ from left to right until it finds $p$ or a mismatch occurs or there is an insufficient number of characters left in $t$. 
-\subsection{Algorithm}
+The brute force or naive method compares each character in the pattern $p$ to each character in the text $t$. It compares $p$ to $t$ from left to right until it finds $p$ or a mismatch occurs or there is an insufficient number of characters left in $t$. \cite{berry}
+\subsection{Algorithm}\cite{bruteforce}
 The algorithm for the brute force method is given below:
 \begin{lstlisting}
 BruteForceStringMatch(T[0...n-1],P[0...m-1])
