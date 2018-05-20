@@ -68,7 +68,7 @@ The Boyer-Moore String Matching algorithm performs its match from right to left 
 In Boyer-Moore string searching algorithm, the pattern $pat[1 ... patlen]$ of length $patlen$ is searched in string $string[1 ... stringlen]$ of length $stringlen$. For this part of the paper, let $char$ be defined as the $patlen^{th}$ character of $string$ when $pat$ is placed on top of the leftmost part of $string$ - $char$ is the character of $string$ aligned with the last character of $pat$. Boyer and Moore uses a function to quickly traverse $string$. It is the Bad Character Shift, which was initially referred to as $delta_1$.\cite{boyerMoore}
 
 \subsection{Algorithm}
-The Boyer-Moore searches using the following algorithm:
+\cite{boyerMoore}The Boyer-Moore searches using the following algorithm:
 \begin{lstlisting}[mathescape=true]
 		$stringlen \gets$ length of $string$.
 		$i \gets patlen.$
@@ -129,10 +129,10 @@ pat:                       ONION
 \end{lstlisting}
 
 \subsection{Worst Case}
-The worst case of Boyer-Moore algorithm occurs when for every alignment $pat[1...patlen]$ and $string[i-patlen+1...i]$, every element is compared with only the first elements not being equal. Hence per alignment, $patlen$ comparisons will be done. Also, the pattern is only shifted to the right by one. Since $string$ has the length $stringlen$ and $pat$ is $patlen$ long, there will be $(stringlen-patlen+1)$ alignments. Therefore, the maximum number of comparisons is $(patlen)\times(stringlen-patlen+1)$, consequently it has a complexity of $\Theta(patlen \times stringlen)$.
+The worst case of Boyer-Moore algorithm occurs when for every alignment $pat[1...patlen]$ and $string[i-patlen+1...i]$, every element is compared with only the first elements not being equal. Hence per alignment, $patlen$ comparisons will be done. Also, the pattern is only shifted to the right by one. Since $string$ has the length $stringlen$ and $pat$ is $patlen$ long, there will be $(stringlen-patlen+1)$ alignments. Therefore, the maximum number of comparisons is $(patlen)\times(stringlen-patlen+1)$, consequently it has a complexity of $\Theta(patlen \times stringlen)$.\cite{boyerMoore}
 
 
-\section{Berry-Ravindran}
+\section{Berry-Ravindran}			%	Berry-Ravindran
 Based on a plethora of algorithms that was brought about by Boyer-Moore Exact String Matching Algorithm, Berry and Ravindran designed an algorithm which does shifting considering the two consecutive characters to the right of the window.
 \subsection{Algorithm}
 \begin{enumerate}
