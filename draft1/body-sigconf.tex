@@ -129,7 +129,7 @@ pat:                       ONION
 \end{lstlisting}
 
 \subsection{Worst Case}
-The worst case of Boyer-Moore algorithm occurs when for every alignment $pat[1...patlen]$ and $string[i-patlen+1...i]$, every element is compared with only the first elements not being equal. Hence per alignment, $patlen$ comparisons will be done. Also, the pattern is only shifted to the right by one. Since $string$ has the length $stringlen$ and $pat$ is $patlen$ long, there will be $(stringlen-patlen+1)$ alignments. Therefore, the maximum number of comparisons is $(patlen)\times(stringlen-patlen+1)$, consequently it has a complexity of $\Theta(patlen \times stringlen)$.\cite{boyerMoore}
+The worst case of Boyer-Moore algorithm occurs when for every alignment $pat[1...patlen]$ and $string[i-patlen+1...i]$, every element is compared with only the first elements not being equal. Hence per alignment, $patlen$ comparisons will be done. Also, the pattern is only shifted to the right by one. Since $string$ has the length $stringlen$ and $pat$ is $patlen$ long, there will be $(stringlen-patlen+1)$ alignments. Therefore, the maximum number of comparisons is $(patlen)\times(stringlen-patlen+1)$, consequently it has a complexity of $\Theta\left(patlen \times stringlen\right)$.\cite{berry}
 
 
 \section{Berry-Ravindran}			%	Berry-Ravindran
@@ -194,15 +194,12 @@ The $ST$ table is all initialized with values of $m+2$ which is $7$. The Shift V
 \end{enumerate}
 The $ST$ table would look like the following after the values are entered. The table is accessed by row and then by column such that the value of $ST(i,j)$ of any $i$ or $j$ is at row $i$ and column $j$. \\
 
-\begin{tabular}{ | c | c c c c | }
-\toprule
-    & 0 & 1 & 2 & 3  \\
-\midrule
+\begin{tabular}{ | c | c c c c | }\hline
+    & 0 & 1 & 2 & 3  \\\hline
   0 & 7 & 7 & 6 & 7  \\
   1 & 1 & 1 & 1 & 1  \\
   2 & 7 & 2 & 6 & 7  \\
-  3 & 7 & 7 & 3 & 7  \\
-\bottomrule
+  3 & 7 & 7 & 3 & 7  \\\hline
 \end{tabular}\\
  \\
 The preprocessing section of the algorithm is now over. String matching can now be initiated. The $ST$ and $CON$ tables will now be used as a heuristic to speed up the string matching process.\\
@@ -219,11 +216,3 @@ In the following tables, the remaining steps are executed until a `match' or `no
 \captionof*{table}{So the pattern `onion' has been matched and the test is exhausted}
 
 Further, the word `onion', in a text length of $26$, was found using only $10$ comparisons.
-
-\section{Conclusion}
-
-Three different algorithms was shown, which were fundamentally the same but as more people have invested on improving the Exact String Matching Algorithms, the algorithms following the first one has become more optimized to do string matching on character by character basis.
-\\
-Further improvements to the algorithms can be seen on those of Two Sliding Window String Matching Algorithm, Enhanced Two Sliding Window String Matching Algorithm, or the Four Sliding Window String Matching Algorithm. Other String Matching Algorithms also include not those of the `Exact' but algorithms that employ Fuzzy String Matching which trades-off accuracy for speed. Also, along with the advent of multi-core processing, the algorithms could scale horizontally across multiple threads for speed. Algorithms of string processing should also consider GPU processing units meaning that string matching should also be done on not only 2, 4 or 8 cores but up to a hundreds and thousands of processing cores. 
-\\
-Application of the said algorithms sources from different fields and categories such as image recognition, voice recognition, text processing and more.
