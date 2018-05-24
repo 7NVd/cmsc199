@@ -194,12 +194,15 @@ The $ST$ table is all initialized with values of $m+2$ which is $7$. The Shift V
 \end{enumerate}
 The $ST$ table would look like the following after the values are entered. The table is accessed by row and then by column such that the value of $ST(i,j)$ of any $i$ or $j$ is at row $i$ and column $j$. \\
 
-\begin{tabular}{ | c | c c c c | }\hline
-    & 0 & 1 & 2 & 3  \\\hline
+\begin{tabular}{ | c | c c c c | }
+\toprule
+    & 0 & 1 & 2 & 3  \\
+\midrule
   0 & 7 & 7 & 6 & 7  \\
   1 & 1 & 1 & 1 & 1  \\
   2 & 7 & 2 & 6 & 7  \\
-  3 & 7 & 7 & 3 & 7  \\\hline
+  3 & 7 & 7 & 3 & 7  \\
+\bottomrule
 \end{tabular}\\
  \\
 The preprocessing section of the algorithm is now over. String matching can now be initiated. The $ST$ and $CON$ tables will now be used as a heuristic to speed up the string matching process.\\
