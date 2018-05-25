@@ -1,19 +1,19 @@
-\section{Introduction}
+\section{Introduction}			%		Introduction
  Pattern matching is an important concept in computer science due to its many technological applications such as DNA matching, voice recognition, face recognition, network security, and text processing.\cite{fsw}
 \\
 Pattern matching is finding one or all occurrences of a certain pattern $p$ of length $m$ in a text $t$ of length $n$. \cite{fsw} Pattern matching algorithms as is with all other algorithms base its performance by its time complexity. The time complexity of a pattern matching algorithm is based on its basic operation: comparison. A higher number of comparisons mean larger time complexity.\cite{fsw} Thus, most pattern matching algorithms are concerned with minimizing the number of comparisons to get a better time efficiency.
 \\
 This paper is concerned with discussing and illustrating three pattern matching algorithms: brute force, Boyer-Moore, and Berry Ravindran. 
-\section{Definition of Terms}
+\section{Definition of Terms}		%		Definition of Terms
 
 \begin{itemize}
 	\item Text: a body of characters $T$ to be matched upon.
 	\item Pattern: a string of characters $P$ which is to be matched with the text.
-  \item Window: the current position $k$ which $T[k+1]\ldots T[k+m]$ is aligned with $P[1]\ldots P[m]$, where $m$ is the length of pattern $P$.
+	\item Window: the current position $k$ which \\$T[k+1]\ldots T[k+m]$ is aligned with $P[1]\ldots P[m]$, where $m$ is the length of pattern $P$.
   \item Mismatch: when the characters $T[k+1]\ldots T[k+m]$ does not match with all of $P[1]\ldots P[m]$.
 \end{itemize}
 
-\section{Brute Force}
+\section{Brute Force}			%		Brute Force
 The brute force or naive method compares each character in the pattern $p$ to each character in the text $t$. It compares $p$ to $t$ from left to right until it finds $p$ or a mismatch occurs or there is an insufficient number of characters left in $t$. \cite{berry}
 \subsection{Algorithm}\cite{bruteforce}
 The algorithm for the brute force method is given below:
@@ -65,7 +65,7 @@ The following two exact string matching algorithms that will be discussed use he
 \section{Boyer-Moore}		%	Boyer Moore
 The Boyer-Moore String Matching algorithm performs its match from right to left instead the usual left to right of its time. This right to left matching enabled Boyer-Moore algorithm to skip more characters than the other algorithms\cite{boyerMoore}.
 
-In Boyer-Moore string searching algorithm, the pattern $pat[1 ... patlen]$ of length $patlen$ is searched in string $string[1 ... stringlen]$ of length $stringlen$. For this part of the paper, let $char$ be defined as the $patlen^{th}$ character of $string$ when $pat$ is placed on top of the leftmost part of $string$ - $char$ is the character of $string$ aligned with the last character of $pat$. Boyer and Moore uses a function to quickly traverse $string$. It is the Bad Character Shift, which was initially referred to as $delta_1$.\cite{boyerMoore}
+\sloppy In Boyer-Moore string searching algorithm, the pattern $pat[1 ... patlen]$ of length $patlen$ is searched in string $string[1 ... stringlen]$ of length $stringlen$. For this part of the paper, let $char$ be defined as the $patlen^{th}$ character of $string$ when $pat$ is placed on top of the leftmost part of $string$, $char$ is the character of $string$ aligned with the last character of $pat$. Boyer and Moore uses a function to quickly traverse $string$. It is called the Bad Character Shift, which was initially referred to as $delta_1$.\cite{boyerMoore}
 
 \subsection{Algorithm}
 \cite{boyerMoore}The Boyer-Moore searches using the following algorithm:
@@ -75,13 +75,13 @@ In Boyer-Moore string searching algorithm, the pattern $pat[1 ... patlen]$ of le
 $top$:	if $i > stringlen$ then return false
 		$j \gets patlen$.
 $loop$:	if $j=0$ then return $j+1$.
-		if $string(i)=pat(j)$
+		if $string[i]=pat[j]$
 			then
 			$j \gets j-1$.
 			$i \gets i-1$.
 			goto $loop$.
 			close;
-		$i \gets i + badChar(\ string(i)\ )$
+		$i \gets i + badChar(\ string[i]\ )$
 		goto $top$
 \end{lstlisting}
 
@@ -92,7 +92,8 @@ The function $badChar$ is defined by Boyer and Moore as\\
   \begin{cases}
     patlen & \text{does not occur in $patlen$} \\
     2*patlen-j & \text{otherwise; where $pat(j)$ is the} \\
-     & \text{rightmost occurrence of $char$ in $pat$}
+     & \text{rightmost occurrence of $char$}\\
+     & \text{in $pat$}
   \end{cases}
 \end{equation*}
 
@@ -104,7 +105,7 @@ pat:     ONION
              $\uparrow$
 \end{lstlisting}
 
-As $string[5]=$A is not in the pattern, $pat$ is shifted by $patlen=5$ to the right.
+As $string[5]= A$ is not in the pattern, $pat$ is shifted by $patlen=5$ to the right.
 
 \begin{lstlisting}[mathescape=true, basicstyle=\LSTfont]
 string:  WE WANT TO EAT MORE ONIONS
@@ -112,7 +113,7 @@ pat:          ONION
                   $\uparrow$
 \end{lstlisting}
 
-This time $string[10]=$O can be found in $pat$ with the rightmost occurrence at $j=4$. Hence the pattern is shifted to the right by $5-4=1$.
+This time $string[10]= O$ can be found in $pat$ with the rightmost occurrence at $j=4$. Hence the pattern is shifted to the right by $5-4=1$.
 
 \begin{lstlisting}[mathescape=true, basicstyle=\LSTfont]
 string:  WE WANT TO EAT MORE ONIONS
@@ -129,7 +130,7 @@ pat:                       ONION
 \end{lstlisting}
 
 \subsection{Worst Case}
-The worst case of Boyer-Moore algorithm occurs when for every alignment $pat[1...patlen]$ and $string[i-patlen+1...i]$, every element is compared with only the first elements not being equal. Hence per alignment, $patlen$ comparisons will be done. Also, the pattern is only shifted to the right by one. Since $string$ has the length $stringlen$ and $pat$ is $patlen$ long, there will be $(stringlen-patlen+1)$ alignments. Therefore, the maximum number of comparisons is $(patlen)\times(stringlen-patlen+1)$, consequently it has a complexity of $\Theta\left(patlen \times stringlen\right)$.\cite{berry}
+The worst case of Boyer-Moore algorithm occurs when for every alignment $pat[1...patlen]$ and $string[i-patlen+1...i]$, every element is compared with only the first elements not being equal. Hence per alignment, $patlen$ comparisons will be done. Also, the pattern is only shifted to the right by one. Since $string$ has the length $stringlen$ and $pat$ is $patlen$ long, there will be $(stringlen-patlen+1)$ alignments. Therefore, the maximum number of comparisons is $(patlen)\times(stringlen-patlen+1)$, consequently it has a complexity of $\Theta(patlen \times stringlen)$.\cite{berry}
 
 
 \section{Berry-Ravindran}			%	Berry-Ravindran
