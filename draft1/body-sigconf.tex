@@ -129,7 +129,7 @@ pat:                       ONION
 \end{lstlisting}
 
 \subsection{Worst Case}
-The worst case of Boyer-Moore algorithm occurs when for every alignment $pat[1...patlen]$ and $string[i-patlen+1...i]$, every element is compared with only the first elements not being equal. Hence per alignment, $patlen$ comparisons will be done. Also, the pattern is only shifted to the right by one. Since $string$ has the length $stringlen$ and $pat$ is $patlen$ long, there will be $(stringlen-patlen+1)$ alignments. Therefore, the maximum number of comparisons is $(patlen)\times(stringlen-patlen+1)$, consequently it has a complexity of $\Theta(patlen \times stringlen)$.\cite{boyerMoore}
+The worst case of Boyer-Moore algorithm occurs when for every alignment $pat[1 \ldots patlen]$ and $string[i-patlen+1 \ldots i]$, every element is compared with only the first elements not being equal. Hence per alignment, $patlen$ comparisons will be done. Also, the pattern is only shifted to the right by one. Since $string$ has the length $stringlen$ and $pat$ is $patlen$ long, there will be $(stringlen-patlen+1)$ alignments. Therefore, the maximum number of comparisons is $(patlen)\times(stringlen-patlen+1)$, consequently it has a complexity of $\Theta(patlen \times stringlen)$.\cite{boyerMoore}
 
 
 \section{Berry-Ravindran}			%	Berry-Ravindran
@@ -144,7 +144,7 @@ Based on a plethora of algorithms that was brought about by Boyer-Moore Exact St
 
 \item For each character $c$ in the pattern the right most position (numbering from the right, starting with 1) is entered in the corresponding location in $CON$ ($CON[c]=$ right most position of c).
 
-\item For every index $i$ starting at $1$, reading from left to right and finish at $m+1$, do steps 6-9.
+\item For every index $i$ starting at $1$, reading from left to right and finish at $m+1$, do steps 6--9.
 
 	\item For each of characters $P[i]$ and $P[i-1]$ find the values of indices $a$ and $b$ from $CON[P[i-1]]$ and $CON[P[i]]$ respectively, in the $CON$ table. If any of $P[i]$ or $P[i-1]$ does not exist, for every index $q$ available to $ST$ table, set $b=q$ or $a=q$, respectively and do step 7 otherwise, if both exist, proceed.
 
@@ -160,11 +160,11 @@ Based on a plethora of algorithms that was brought about by Boyer-Moore Exact St
 	
 \item Add the new shift value to $k$. Set $k=k+s$.
 
-\item Check the alignment window. Check if the new $k+m > n$. If true, declare that no match was found and stop the program, otherwise repeat steps 10-14. 
+\item Check the alignment window. Check if the new $k+m > n$. If true, declare that no match was found and stop the program, otherwise repeat steps 10--14. 
 
 \end{enumerate}
 \subsection{Example}
-For an example, the pattern `onion' is tested with the text `we want to test with onion'. The example is referenced to Thomas Berry's Dissertation \cite{berry}. 
+For an example, the pattern `onion' is tested with the text `we want to test with onion'. The example is referenced to Thomas Berry's Dissertation\cite{berry}. 
 Let $P$ be the pattern `onion' and $T$ be the text `we want to test with onion'. Now let $m$ be the length of the pattern which is $5$ and $n$ be the length of the text which is $26$. Further, the $CON$ table is generated as follows:
 
 \begin{center}
