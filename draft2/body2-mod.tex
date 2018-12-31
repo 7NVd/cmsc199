@@ -1,0 +1,112 @@
+%The Modification
+%	More Theorems
+%		Prove em all
+%	Results
+%	Data
+
+%Conclusion
+
+%\begin{center}
+	\section{Modified Continuous Newton's Method}
+%\end{center}
+
+Neuberger's version and results are to be extended to the new version (\ref{modNM}). Similar to Neuberger's version of the continuous Newton's method, $p$ is still assumed to be a nonconstant complex polynomial.
+\\
+
+\begin{lem}
+	Let $\om$ be a solution of (\ref{modNM}). Then, $p(\om(t))=p(\om_0)\ds e^{-kt}$.
+\end{lem}
+
+\textit{Proof:}
+From (\ref{modNM}),
+$$	p(\om)'(t) = -kp(\om(t))	$$
+$\bu$ Let $\ds \frac{dp}{dt} = p(\om)'(t)$
+$$\Ra \frac{dp}{dt} = -kp(\om(t))$$
+$$\Ra \frac{dp}{dt} + kp(\om(t)) = 0$$
+$\bu$ Integrating with the use of integrating factors \dots\\
+\phantom{a}\quad\quad\quad getting the integrating factor: $\ds e^{\int k\ dt} = \ds e^{kt+c_1}$
+$$\Ra \ds e^{kt+c_1}\mult\left[\frac{dp}{dt} + kp(\om(t))\right] = \ds e^{kt+c_1}\mult\left[0\right]$$
+$$\Ra \ds e^{kt}\mult\left[\frac{dp}{dt} + kp(\om(t))\right] = \ds e^{kt}\mult\left[0\right]$$
+$$\Ra \ds e^{kt}\mult\frac{dp}{dt} + e^{kt}\mult kp(\om(t)) = 0$$
+$$\Ra \ds D_t\left[e^{kt}\mult p(\om(t))\right] = 0$$
+$$\Ra \ds \int D_t\left[e^{kt}\mult p(\om(t))\right]dt = \ds\int0\ dt$$
+\begin{equation}\label{forLemmaProof}
+	\Ra \ds e^{kt}\mult p(\om(t)) = 0 + c_2
+\end{equation}
+$\bu$ Solving for $c_2$ using (\ref{forLemmaProof}) and the initial value $\om(0) = \om_0$ \dots
+$$\Ra \ds e^{k(0)}\mult p(\om(0)) = c_2$$
+$$\Ra p(\om_0) = c_2$$
+$\bu$ Substituting this value of $c_2$ to (\ref{forLemmaProof}) \dots
+$$\Ra \ds e^{kt}\mult p(\om(t)) = p(\om_0)$$
+$$\Ra p(\om(t)) = p(\om_0)\ds e^{-kt}$$
+\phantom{a}\hfill$\blacksquare$\\
+
+Just as with Neuberger's, the set $\mathcal{Q}_k$ of functions $\om:\mathbb{R}\ra\mathbb{C}$ that solve (\ref{modNM}) was introduced. The next theorem simply extends Neuberger's theorems to (\ref{modNM}).
+
+\begin{thm}
+	For a given $k>0$, if $\om\in\mathcal{Q}_k$, then $u = \ds\lim_{t\to\infty}\om(t)$ exists and $p(u) = 0$.
+\end{thm}
+\textit{Proof: halos same sa proof ni neuberger. \textbf{Need to study}}
+
+
+To further analyze the modified continuous Newton's method (\ref{modNM}), its equilibrium solutions were studied. Let $(x^*,y^*)$ be the 
+fixed points of a system of differential equations
+\begin{equation}	\label{SDE}
+	\left\{ \begin{array}{c @{=} c}
+		x'(t)	&	f(x(t),y(t))\\
+		y'(t)	&	g(x(t),y(t))
+	\end{array}\right. .
+\end{equation}
+Note that generally in complex planes, $z = x+iy$. With this, it is possible to acquire a (\ref{SDE}) where
+\begin{equation}	\label{FandG}
+	f(x,y) = \mathbb{R}e\left(	-\ds\frac{p(x+iy)}{p'(x+iy)}	\right),\ g(x,y) = \mathbb{I}m\left(	-\ds\frac{p(x+iy)}{p'(x+iy)}	\right) .
+\end{equation}
+
+\begin{thm}[Cauchy-Riemann Equations (\cite{CauchyRiemann})]
+	Suppose that $$f(z) = f(x+iy) = u(x,y) + iv(x,y)$$ is differentiable at the point $z_0 = x_0 + iy_0$. Then the derivatives of $u$ and $v$ exist at the point $(x_0,y_0)$, and can be used to calculate the derivative at $(x_0,y_0)$. That is,
+	$$f'(z_0) = u_x(x_0,y_0) + iv_x(x_0,y_0),$$ and $$f'(z_0) = v_y(x_0,y_0) + iu_y(x_0,y_0).$$
+\end{thm}
+
+\begin{thm}
+	Let $z^* = x^* + iy^*$ be a zero with multiplicity $m$ of $p(z)$. Then $(x^*,y^*)$ is an asymptotically stable fixed point of the system (\ref{SDE}) with $f$ and $g$ given by (\ref{FandG}). In addition, if we denote $F(x,y)$ to the vector field $F(x,y) = (f(x,y),(g(x,y)))$, we hae that the Jacobian matrix of $F(x,y)$ at $(x^*,y^*)$ is
+	\begin{equation}
+		F'(x^*,y^*) = \left(\begin{array}{c c}
+							-k/m & 0\\
+							0 & -k/m
+					\end{array}\right)
+	\end{equation}
+\end{thm}
+
+\
+textit{Proof:}
+Since $z^*$ is a zero of $p(z)$ with multiplicity $m$, it is safe to say that $p(z) = (z-z^*)^m q(z)$ where $q(z^*)\neq0$. Let $R(z) = -kp(z)/p'(z)$.
+$$\Ra R(z) = \frac{-k(z-z^*)^m q(z)}{D_x[(z-z^*)^m q(z)]}$$
+$$\Ra R(z) = \frac{-k(z-z^*)^m q(z)}{m(z-z^*)^{m-1}q(z) + q'(z)(z-z^*)^m}$$
+$$\Ra R(z) = \frac{(z-z^*)^m}{(z-z^*)^{m-1}}\mult\frac{-kq(z)}{mq(z) + q'(z)(z-z^*)}$$
+$$\Ra R(z) = (z-z^*)\mult\frac{-kq(z)}{mq(z) + q'(z)(z-z^*)}$$
+Let $R_1(z) = \ds\frac{-kq(z)}{mq(z) + q'(z)(z-z^*)}$,
+$$R(z) = (z-z^*)R_1(z)$$
+From this,
+$$R'(z) = R_1(z) + (z-z^*)R_1\:\!'(z)$$
+$$\Ra R'(z^*) = R_1(z^*) + (z^*-z^*)R_1\:\!'(z^*) = R_1(z^*)$$
+$$\Ra R'(z^*) = \frac{-kq(z^*)}{mq(z^*) + (z^*-z^*)q'(z)}$$
+$$\Ra R'(z^*) = -\frac{k}{m}$$
+$\bu$ By the Cauchy-Riemann equations,
+$$-\frac{k}{m} = R'(x^*+iy^*) = f_x(x^*,y^*) + ig_x(x^*,y^*) = g_y(x^*,y^*) - if_y(x^*,y^*).$$
+$\bu$ By equating the above equation by the real and imaginary parts, $-k/m = f_x(x^*,y^*) = g_y(x^*,y^*)$ and $0 = g_x(x^*,y^*) = f_y(x^*,y^*)$. The Jaconian matrix then of $F(x,y)$ will be
+$$F'(x^*,y^*) = \left(\begin{array}{c c}	f_x(x^*,y^*) & f_y(x^*,y^*)\\	g_x(x^*,y^*) & g_y(x^*,y^*)	\end{array}\right)$$
+$$\Ra F'(x^*,y^*) = \left(\begin{array}{c c}	-\ds\frac{k}{m} & 0\\	0 & -\ds\frac{k}{m}	\end{array}\right)$$
+$\bu$ Computing for the eigenvalues \dots
+$$\Ra F'(x^*,y^*) = \left(\begin{array}{c c}	-\ds\frac{k}{m}-\lambda & 0\\	0 & -\ds\frac{k}{m}-\lambda	\end{array}\right)$$
+$$\Ra \left(-\ds\frac{k}{m}-\lambda\right)\mult\left(-\ds\frac{k}{m}-\lambda \right)-0 = 0$$
+$$\Ra \left(\ds\frac{k}{m}+\lambda\right)^2 = 0$$
+$$\Ra \lambda = -\frac{k}{m},\quad\textrm{multiplicity 2}$$
+$\bu$ Since $\lambda_1 = \lambda_2 < 0$, $(x^*,y^*)$ is an asymptotically stable fixed point of (\ref{SDE}).
+\phantom{a}\hfill$\blacksquare$
+\\
+
+\textit{They had a remark I do not understand what happened. Basta bumabagal yung convergence kapag lumalaki si $m$ pero bumibilis kapag lumalaki si $k$.}\\
+
+\subsection{Numerical examples}
+
+In this part, he theoretical results will be illustrated.
